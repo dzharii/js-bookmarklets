@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "build": "npm run -s clean &&  npm run -s build-ts",
+    "clean": "rimraf ./tsbuild",
+    "build-ts": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.1",
+    "browser-pack-flat": "^3.4.2",
+    "browserify": "^16.5.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.2",
+    "uglify-js": "^3.9.3"
+  }
+}
