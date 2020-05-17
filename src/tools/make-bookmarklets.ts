@@ -23,6 +23,6 @@ const bundleStream = browserify({
 
   bundleStream.on('end', chunk => {
     const outjs = minify(outScriptBundle);
-    console.warn(outjs.code);
+    console.warn('javascript:' + outjs.code);
   });
 
