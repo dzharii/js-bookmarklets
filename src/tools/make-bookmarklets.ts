@@ -6,11 +6,15 @@ import { minify }  from 'uglify-js';
 const packFlat = require('browser-pack-flat');
 
 
-let outScriptBundle = '';
-let outScriptBundleMin = '';
+makeBookmarklet('./tsbuild/bookmarklets/copy-page-title.js', './dist/copy-page-title.txt');
 
-const bundleStream = browserify({
-    entries: './tsbuild/copy-page-title'
+
+
+
+function makeBookmarklet(inFile: string, outFile: string) {
+  let minifiedJs = '';
+  const bundleStream = browserify({
+    entries: inFile
    }).plugin(packFlat, { /* options */ })
   .bundle();
 
@@ -18,11 +22,21 @@ const bundleStream = browserify({
     //chunk = cleanDefineProperty(chunk);
     let str = String(chunk);
     str = str.replace(/Object\.defineProperty\(\S+?, "__esModule", \{ value: true \}\);/g, '');
-    outScriptBundle += str;
+    minifiedJs += str;
   });
 
   bundleStream.on('end', chunk => {
-    const outjs = minify(outScriptBundle);
-    console.warn('javascript:' + outjs.code);
-  });
+    const res = minify(minifiedJs);
+    if (res.error) {
+      console.error(res.error);
+      process.exit(-1);
+    }
 
+    if (res.warnings) {
+      console.warn(res.warnings.join('\n'));
+    }
+    const outcode = 'javascript:' + res.code;
+    fs.writeFileSync(outFile, outcode);
+    console.log(`success: ${inFile} -> ${outFile}`);
+  });
+}
