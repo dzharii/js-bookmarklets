@@ -1,11 +1,14 @@
 {
   "scripts": {
-    "build": "npm run -s clean &&  npm run -s build-ts",
+    "build": "npm run -s clean &&  npm run -s build-ts && npm run -s bundle",
     "clean": "rimraf ./tsbuild",
-    "build-ts": "tsc"
+    "build-ts": "tsc",
+    "bundle": "ts-node ./src/tools/make-bookmarklets.ts"
   },
   "devDependencies": {
+    "@types/browserify": "^12.0.36",
     "@types/node": "^14.0.1",
+    "@types/uglify-js": "^3.9.1",
     "browser-pack-flat": "^3.4.2",
     "browserify": "^16.5.1",
     "rimraf": "^3.0.2",
