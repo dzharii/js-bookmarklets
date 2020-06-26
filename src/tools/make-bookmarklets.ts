@@ -7,9 +7,7 @@ const packFlat = require('browser-pack-flat');
 
 
 makeBookmarklet('./tsbuild/bookmarklets/copy-page-title.js', './dist/copy-page-title.txt');
-
-
-
+makeBookmarklet('./tsbuild/bookmarklets/copy-page-title-md.js', './dist/copy-page-title-md.txt');
 
 function makeBookmarklet(inFile: string, outFile: string) {
   let minifiedJs = '';
