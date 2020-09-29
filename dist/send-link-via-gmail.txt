@@ -1,0 +1,1 @@
+javascript:!function(){var e,o,t,n=document.title,c=document.location.href,d=document.createElement("a");d.href=(e="LINK: "+n,o=n+"\n"+c,"https://mail.google.com/mail/?view=cm&fs=1&to="+(t=encodeURIComponent)("d@zharii.com")+"&su="+t(e)+"&body="+t(o)),d.target="_blank",document.body.appendChild(d),d.click(),document.body.removeChild(d)}();
