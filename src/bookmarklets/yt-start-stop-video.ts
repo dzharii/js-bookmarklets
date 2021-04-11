@@ -6,8 +6,10 @@ document.addEventListener('visibilitychange', function () {
 
   /* A bit silly is else, but maybe I will do some other actions depending on the visibility state */
   if (document.visibilityState === 'visible') {
+    console.log(`Visibility: ${document.visibilityState}`);
     vid.click();
   } else {
+    console.log(`Visibility: ${document.visibilityState}`);
     vid.click();
   }
 });
