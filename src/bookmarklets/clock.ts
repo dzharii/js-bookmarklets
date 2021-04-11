@@ -1,5 +1,5 @@
 const container = document.createElement('div');
-const intlOptions = {
+const intlOptions: Intl.DateTimeFormatOptions = {
     hour: '2-digit',
     minute: '2-digit',
 };

@@ -1,0 +1,1 @@
+javascript:document.addEventListener("visibilitychange",function(){var e=document.querySelector(".html5-main-video");e||console.error("Video element was not found"),document.visibilityState,e.click()});
