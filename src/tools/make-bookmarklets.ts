@@ -8,6 +8,7 @@ const packFlat = require('browser-pack-flat');
 
 makeBookmarklet('./tsbuild/bookmarklets/copy-page-title.js', './dist/copy-page-title.txt');
 makeBookmarklet('./tsbuild/bookmarklets/copy-page-title-md.js', './dist/copy-page-title-md.txt');
+makeBookmarklet('./tsbuild/bookmarklets/copy-page-title-md-with-date.js', './dist/copy-page-title-md-with-date.txt');
 makeBookmarklet('./tsbuild/bookmarklets/send-link-via-gmail.js', './dist/send-link-via-gmail.txt');
 makeBookmarklet('./tsbuild/bookmarklets/clock.js', './dist/clock.txt');
 makeBookmarklet('./tsbuild/bookmarklets/yt-start-stop-video.js', './dist/yt-start-stop-video.txt');

@@ -1,52 +1,51 @@
-export function copyToClipboard(content: string, doc: Document): boolean {
-    if (!doc) {
-        return false;
+export function copyToClipboard(content: string, buttonTitle: string, D: Document): void {
+    if (!D) {
+        return;
+    }
+    const B = D.body;
+    function copyClip() {
+        const txt = D.createElement('textarea');
+        txt.setAttribute('style', 'width: 0px; height:0px');
+        B.appendChild(txt);
+        txt.value = content;
+
+        setTimeout(() => {
+            txt.select();
+            txt.setSelectionRange(0, 99999);
+            D.execCommand("copy");
+            B.removeChild(txt);
+        }, 1)
     }
 
-    const main = doc.createElement('div');
-    const txt = doc.createElement('textarea');
-    const btnCopy = doc.createElement('input');
-    const btnCancel = doc.createElement('input');
+    function showCopyButton() {
+        const btn = D.createElement('button');
+        btn.setAttribute('style', [
+            'position: fixed',
+            'top: 0px',
+            'left: 0px',
+            'z-index: 99999',
+            'background: lightgreen',
+            'border: 2px solid black',
+            'border: color: black',
+            'letter-spacing: normal',
+            'word-spacing: normal',
+            'text-transform: none',
+            'text-indent: 0px',
+            'text-shadow: none',
+            'display: inline-block',
+            'text-align: center',
+            'cursor: default',
+            'box-sizing: border-box',
+            'margin: 0em',
+            'font: 400 20pt Arial',
+        ].join(';'));
+        btn.textContent = buttonTitle;
+        B.appendChild(btn);
+        btn.onclick = () => {
+            copyClip();
+            B.removeChild(btn);
+        }
+    }
 
-    main.appendChild(txt);
-    main.appendChild(btnCopy);
-    main.appendChild(btnCancel);
-
-    main.setAttribute('style', [
-        'width:100%',
-        'border:1px solid silver',
-        'padding:5px',
-        'position:absolute',
-        'background:black',
-        'z-index:9999'
-    ].join(';'));
-
-    txt.value = content;
-    txt.setAttribute('rows', '1');
-    txt.setAttribute('style', [
-        'width:50%',
-        'overflow:hidden',
-        'resize:none',
-        'float:left'
-    ].join(';'));
-
-    btnCopy.type = 'button';
-    btnCopy.value = 'Copy';
-    btnCopy.onclick = function() {
-        txt.select();
-        txt.setSelectionRange(0, 99999);
-        doc.execCommand("copy");
-        doc.body.removeChild(main);
-    };
-
-    btnCancel.type = 'button';
-    btnCancel.value = 'Cancel';
-    btnCancel.onclick = function() {
-        doc.body.removeChild(main);
-    };
-
-    const first = doc.body.firstChild;
-    doc.body.insertBefore(main, first);
-    main.scrollIntoView();
-    return true;
+    showCopyButton();
 }
