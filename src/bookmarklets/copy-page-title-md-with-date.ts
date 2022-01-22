@@ -10,4 +10,4 @@ now = new Date(now.getTime() - (offset*60*1000))
 const dateStr = now.toISOString().split('T')[0];
 
 
-copyToClipboard(`- (${dateStr}) [${title}](${url})`, 'Copy Page URL to Clipboard', document);
+copyToClipboard(`- ${dateStr} [${title}](${url})`, 'Copy Page URL to Clipboard', document);
