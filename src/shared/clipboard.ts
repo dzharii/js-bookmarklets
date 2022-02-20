@@ -3,19 +3,6 @@ export function copyToClipboard(content: string, buttonTitle: string, D: Documen
         return;
     }
     const B = D.body;
-    function copyClip() {
-        const txt = D.createElement('textarea');
-        txt.setAttribute('style', 'width: 0px; height:0px');
-        B.appendChild(txt);
-        txt.value = content;
-
-        setTimeout(() => {
-            txt.select();
-            txt.setSelectionRange(0, 99999);
-            D.execCommand("copy");
-            B.removeChild(txt);
-        }, 1)
-    }
 
     function showCopyButton() {
         const btn = D.createElement('button');
@@ -42,10 +29,13 @@ export function copyToClipboard(content: string, buttonTitle: string, D: Documen
         btn.textContent = buttonTitle;
         B.appendChild(btn);
         btn.onclick = () => {
-            copyClip();
+            navigator.clipboard.writeText(content).then(function() {
+                console.log('Content copied to clipboard');
+              }, function() {
+                console.log('Failed to copy content to clipboard');
+              });
             B.removeChild(btn);
         }
     }
-
     showCopyButton();
 }
