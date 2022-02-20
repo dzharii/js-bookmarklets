@@ -1,7 +1,7 @@
 import { copyToClipboard } from '../shared/clipboard';
 
 
-const title = document.title.replace(/[\|\[\(\]\)]/g, ' ').replace(/\s+/g, '').trim();
+const title = document.title.replace(/[\|\[\(\]\)]/g, ' ').replace(/\s+/g, ' ').trim();
 const url = document.location.href;
 
 let now = new Date();
