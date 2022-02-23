@@ -13,6 +13,8 @@ makeBookmarklet('./tsbuild/bookmarklets/copy-page-title-md-with-date.js', './dis
 makeBookmarklet('./tsbuild/bookmarklets/send-link-via-gmail.js', './dist/send-link-via-gmail.txt');
 makeBookmarklet('./tsbuild/bookmarklets/clock.js', './dist/clock.txt');
 makeBookmarklet('./tsbuild/bookmarklets/yt-start-stop-video.js', './dist/yt-start-stop-video.txt');
+makeBookmarklet('./tsbuild/bookmarklets/copy-page-smart-md.js', './dist/copy-page-smart-md.txt');
+
 
 function makeBookmarklet(inFile: string, outFile: string) {
   let minifiedJs = '';
